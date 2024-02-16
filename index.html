@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Someone Out</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFC0CB; /* Pink background */
+            color: #9b2b68; /* Romantic color for text */
+            background-image: url('https://emojicombos.com/images/emoji-heart/heart.png'); /* Heart background image */
+            background-repeat: no-repeat;
+            background-size: 200px; /* Size of the heart */
+            background-position: center; /* Position the heart in the center */
+        }
+        .container {
+            text-align: center;
+        }
+        .yes-button {
+            font-size: 20px; /* Initial font size for Yes button */
+            color: #c41c5a; /* Romantic color for Yes button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Hey, would you like to go on a date with me? ❤️</h1>
+        <p>Enter the name of the person you want to ask out:</p>
+        <input type="text" id="inputName" placeholder="Enter name...">
+        <button onclick="askOut()">Ask Out</button>
+        <p id="outputMessage"></p>
+    </div>
+
+    <script>
+        var yesClicked = false; // Flag to track if "Yes" button is clicked
+
+        function askOut() {
+            var name = document.getElementById('inputName').value;
+            if (name.trim() === '') {
+                alert('Please enter a valid name!');
+                return;
+            }
+            var message = 'Hey ' + name + '! Would you like to go on a date with me? 🌹';
+            document.getElementById('outputMessage').innerHTML = message + '<br>';
+            document.getElementById('outputMessage').innerHTML += '<button class="yes-button" onclick="respondYes(\'' + name + '\')">Yes</button>';
+            document.getElementById('outputMessage').innerHTML += '<button onclick="respondNo()">No</button>';
+        }
+
+        function respondYes(name) {
+            if (!yesClicked) {
+                alert('Call 81913413 for a date with Arshia');
+                yesClicked = true;
+                document.getElementById('outputMessage').innerHTML = '<h2>I Love You, ' + name + '!</h2>'; // Display "I love you" message
+            }
+        }
+
+        function respondNo() {
+            var yesButton = document.querySelector('.yes-button');
+            var currentFontSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentFontSize * 2) + 'px'; // Increase font size of "Yes" button exponentially
+        }
+    </script>
+</body>
+</html>
